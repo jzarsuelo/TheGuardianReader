@@ -17,10 +17,13 @@ public class TheGuardianApiUtil {
     }
 
     public static String getContentEndpoint(Context context) {
-        final String baseUri = context.getString(R.string.the_guardian_api_content_endpoint);
-        Uri uri = new Uri.Builder()
-                .appendQueryParameter("api-key", getApiKey(context))
-                .build();
-        return uri.toString();
+        final String uriString = context.getString(R.string.the_guardian_api_content_endpoint);
+
+        Uri baseUri = Uri.parse(uriString);
+
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+        uriBuilder.appendQueryParameter("api-key", getApiKey(context));
+
+        return uriBuilder.toString();
     }
 }
