@@ -55,6 +55,7 @@ public class QueryUtil {
         InputStream inputStream = null;
 
         try {
+            Log.d(LOG_TAG, "Request URL: " + requestUrl);
             URL url = new URL(requestUrl);
 
             connection = (HttpURLConnection) url.openConnection();
@@ -62,6 +63,8 @@ public class QueryUtil {
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(10000);
             connection.connect();
+
+            Log.d(LOG_TAG, "HTTP Response Code: " + connection.getResponseCode());
 
             if (connection.getResponseCode() == 200) {
                 inputStream = connection.getInputStream();
@@ -104,6 +107,7 @@ public class QueryUtil {
             String line = bufferedReader.readLine();
             while (line != null) {
                 response.append( line );
+                line = bufferedReader.readLine();
             }
         }
 
