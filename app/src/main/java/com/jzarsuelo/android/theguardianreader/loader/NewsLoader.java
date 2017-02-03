@@ -4,6 +4,7 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 
 import com.jzarsuelo.android.theguardianreader.News;
+import com.jzarsuelo.android.theguardianreader.util.QueryUtil;
 
 import java.util.List;
 
@@ -15,9 +16,11 @@ import java.util.List;
 public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
     private static final String LOG_TAG = NewsLoader.class.getSimpleName();
+    private final String URL;
 
     public NewsLoader(Context context, String url) {
         super(context);
+        URL = url;
     }
 
     @Override
@@ -28,7 +31,6 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
     @Override
     public List<News> loadInBackground() {
-        // TODO perform the network request
-        return null;
+        return QueryUtil.fetchNewsData(URL);
     }
 }

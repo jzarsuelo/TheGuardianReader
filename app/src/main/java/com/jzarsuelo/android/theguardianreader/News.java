@@ -69,4 +69,15 @@ public class News {
     public void setApiUrl(String apiUrl) {
         mApiUrl = apiUrl;
     }
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "mSectionId='" + mSectionId + '\'' +
+                ", mSectionName='" + mSectionName + '\'' +
+                ", mWebTitle='" + mWebTitle + '\'' +
+                ", mWebUrl='" + mWebUrl + '\'' +
+                ", mApiUrl='" + mApiUrl + '\'' +
+                '}';
+    }
 }
