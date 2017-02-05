@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.jzarsuelo.android.theguardianreader.loader.NewsLoader;
+import com.jzarsuelo.android.theguardianreader.util.NetworkUtil;
 import com.jzarsuelo.android.theguardianreader.util.TheGuardianApiUtil;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private ListView mNewsListView;
     private NewsAdapter mNewsAdapter;
+    private TextView mEmptyListTextView;
 
 
     @Override
@@ -32,12 +34,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getLoaderManager().initLoader(NEWS_LOADER_ID, null, this);
+        if ( NetworkUtil.isConnected(this) ) {
+            getLoaderManager().initLoader(NEWS_LOADER_ID, null, this);
+        } else {
+            hideLoadingSpinner();
+        }
 
         mNewsAdapter = new NewsAdapter(this, new ArrayList<News>());
 
+        mEmptyListTextView = (TextView) findViewById(R.id.empty_list_view);
+
         mNewsListView = (ListView) findViewById(R.id.news_list_view);
         mNewsListView.setAdapter(mNewsAdapter);
+        mNewsListView.setEmptyView(mEmptyListTextView);
     }
 
     @Override
@@ -50,12 +59,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
         hideLoadingSpinner();
 
-        TextView emptyListTextView = (TextView) findViewById(R.id.empty_list_view);
-        mNewsListView.setEmptyView(emptyListTextView);
 
         if (data != null && !data.isEmpty()) {
             mNewsAdapter.clear();
             mNewsAdapter.addAll(data);
+        } else {
+            mEmptyListTextView.setText(R.string.empty_list_message);
         }
     }
 

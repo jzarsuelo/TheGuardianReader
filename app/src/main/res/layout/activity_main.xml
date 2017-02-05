@@ -20,7 +20,6 @@
         android:id="@+id/empty_list_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/empty_list_message"
         android:layout_centerInParent="true"/>
 
     <ProgressBar
