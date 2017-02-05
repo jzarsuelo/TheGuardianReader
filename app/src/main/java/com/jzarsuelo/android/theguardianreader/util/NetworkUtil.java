@@ -5,11 +5,17 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
- * Utility class for network related tasks
+ * Utility class for getting network related information
  */
 
 public class NetworkUtil {
 
+    /**
+     * Check if the device is connected to a network (WiFi/data)
+     *
+     * @param context
+     * @return
+     */
     public static boolean isConnected(Context context) {
         ConnectivityManager cm =
                 (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);

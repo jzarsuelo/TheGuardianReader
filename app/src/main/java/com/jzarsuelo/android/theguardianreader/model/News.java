@@ -1,4 +1,4 @@
-package com.jzarsuelo.android.theguardianreader;
+package com.jzarsuelo.android.theguardianreader.model;
 
 /**
  * A {@link News} object contains information related to a single news

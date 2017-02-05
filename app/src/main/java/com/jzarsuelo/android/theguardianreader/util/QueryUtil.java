@@ -2,7 +2,7 @@ package com.jzarsuelo.android.theguardianreader.util;
 
 import android.util.Log;
 
-import com.jzarsuelo.android.theguardianreader.News;
+import com.jzarsuelo.android.theguardianreader.model.News;
 
 import org.json.JSONArray;
 import org.json.JSONException;

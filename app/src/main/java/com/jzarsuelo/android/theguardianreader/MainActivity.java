@@ -5,13 +5,13 @@ import android.app.LoaderManager;
 import android.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.jzarsuelo.android.theguardianreader.loader.NewsLoader;
+import com.jzarsuelo.android.theguardianreader.model.News;
 import com.jzarsuelo.android.theguardianreader.util.NetworkUtil;
 import com.jzarsuelo.android.theguardianreader.util.TheGuardianApiUtil;
 
@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     public static final int NEWS_LOADER_ID = 0;
 
-    private ListView mNewsListView;
     private NewsAdapter mNewsAdapter;
-    private TextView mEmptyListTextView;
 
+    private ListView mNewsListView;
+    private TextView mEmptyListTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         if ( NetworkUtil.isConnected(this) ) {
+            // this will trigger "onCreateLoader(int id, Bundle args)"
             getLoaderManager().initLoader(NEWS_LOADER_ID, null, this);
         } else {
             hideLoadingSpinner();
@@ -59,12 +60,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
         hideLoadingSpinner();
 
-
-        if (data != null && !data.isEmpty()) {
+        if (data == null && data.isEmpty()) {
+            mEmptyListTextView.setText(R.string.empty_list_message);
+        } else {
             mNewsAdapter.clear();
             mNewsAdapter.addAll(data);
-        } else {
-            mEmptyListTextView.setText(R.string.empty_list_message);
         }
     }
 

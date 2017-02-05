@@ -3,7 +3,7 @@ package com.jzarsuelo.android.theguardianreader.loader;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 
-import com.jzarsuelo.android.theguardianreader.News;
+import com.jzarsuelo.android.theguardianreader.model.News;
 import com.jzarsuelo.android.theguardianreader.util.QueryUtil;
 
 import java.util.List;

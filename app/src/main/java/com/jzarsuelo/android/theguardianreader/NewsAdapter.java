@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.jzarsuelo.android.theguardianreader.model.News;
+
 import java.util.List;
 
 /**
- * Created by cloudemployee on 03/02/2017.
+ * Adapter class for {@link MainActivity#mNewsListView}
  */
 
 public class NewsAdapter extends ArrayAdapter<News> {
