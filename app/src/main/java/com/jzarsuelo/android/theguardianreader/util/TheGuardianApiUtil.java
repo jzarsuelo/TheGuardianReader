@@ -6,7 +6,7 @@ import android.net.Uri;
 import com.jzarsuelo.android.theguardianreader.R;
 
 /**
- * Utility class for
+ * Utility class for communicating to The Guardian API
  */
 
 public class TheGuardianApiUtil {
