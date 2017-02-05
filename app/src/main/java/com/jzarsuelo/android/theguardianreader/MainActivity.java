@@ -2,10 +2,13 @@ package com.jzarsuelo.android.theguardianreader;
 
 
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.content.Loader;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             // this will trigger "onCreateLoader(int id, Bundle args)"
             getLoaderManager().initLoader(NEWS_LOADER_ID, null, this);
         } else {
-            hideLoadingSpinner();
+            showEmptyListMessage();
         }
 
         mNewsAdapter = new NewsAdapter(this, new ArrayList<News>());
@@ -48,6 +51,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mNewsListView = (ListView) findViewById(R.id.news_list_view);
         mNewsListView.setAdapter(mNewsAdapter);
         mNewsListView.setEmptyView(mEmptyListTextView);
+        mNewsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                News news = mNewsAdapter.getItem(position);
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                Intent appChooserIntent = i.setData(Uri.parse(news.getWebUrl()));
+
+                if (appChooserIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(appChooserIntent);
+                }
+            }
+        });
     }
 
     @Override
@@ -58,10 +74,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
-        hideLoadingSpinner();
+        showEmptyListMessage();
 
         if (data == null && data.isEmpty()) {
-            mEmptyListTextView.setText(R.string.empty_list_message);
+            showEmptyListMessage();
         } else {
             mNewsAdapter.clear();
             mNewsAdapter.addAll(data);
@@ -73,8 +89,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mNewsAdapter.clear();
     }
 
-    private void hideLoadingSpinner() {
+    private void showEmptyListMessage() {
         ProgressBar loadingSpinner = (ProgressBar) findViewById(R.id.loading_spinner);
         loadingSpinner.setVisibility(View.GONE);
+
+        mEmptyListTextView.setText(R.string.empty_list_message);
     }
 }
