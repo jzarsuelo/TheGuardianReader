@@ -6,7 +6,9 @@ import android.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.jzarsuelo.android.theguardianreader.loader.NewsLoader;
 import com.jzarsuelo.android.theguardianreader.util.TheGuardianApiUtil;
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
+        hideLoadingSpinner();
+
         if (data != null && !data.isEmpty()) {
             mNewsAdapter.clear();
             mNewsAdapter.addAll(data);
@@ -54,5 +58,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoaderReset(Loader<List<News>> loader) {
         mNewsAdapter.clear();
+    }
+
+    private void hideLoadingSpinner() {
+        ProgressBar loadingSpinner = (ProgressBar) findViewById(R.id.loading_spinner);
+        loadingSpinner.setVisibility(View.GONE);
     }
 }
