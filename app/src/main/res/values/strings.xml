@@ -3,4 +3,6 @@
 
     <!-- The Guardian API endpoints -->
     <string name="the_guardian_api_content_endpoint">https://content.guardianapis.com/search</string>
+
+    <string name="empty_list_message">No news to show.</string>
 </resources>

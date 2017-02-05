@@ -16,10 +16,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <TextView
+        android:id="@+id/empty_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_list_message"
+        android:layout_centerInParent="true"/>
+
     <ProgressBar
         android:id="@+id/loading_spinner"
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-    android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"/>
+
 </RelativeLayout>

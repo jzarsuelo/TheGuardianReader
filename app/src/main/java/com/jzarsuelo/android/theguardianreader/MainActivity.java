@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.jzarsuelo.android.theguardianreader.loader.NewsLoader;
 import com.jzarsuelo.android.theguardianreader.util.TheGuardianApiUtil;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
         hideLoadingSpinner();
+
+        TextView emptyListTextView = (TextView) findViewById(R.id.empty_list_view);
+        mNewsListView.setEmptyView(emptyListTextView);
 
         if (data != null && !data.isEmpty()) {
             mNewsAdapter.clear();
