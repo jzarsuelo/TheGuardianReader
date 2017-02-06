@@ -24,11 +24,17 @@ public class TheGuardianApiUtil {
                 context.getString(R.string.settings_number_of_news_to_load_key),
                 context.getString(R.string.settings_number_of_news_to_load_default));
 
+        final String orderBy = PreferenceUtil.getString(
+                context,
+                context.getString(R.string.settings_order_by_key),
+                context.getString(R.string.settings_order_by_default));
+
         Uri baseUri = Uri.parse(uriString);
 
         Uri.Builder uriBuilder = baseUri.buildUpon();
         uriBuilder.appendQueryParameter("api-key", getApiKey(context));
         uriBuilder.appendQueryParameter("page-size", pageSizeValue);
+        uriBuilder.appendQueryParameter("order-by", orderBy);
 
         return uriBuilder.toString();
     }
