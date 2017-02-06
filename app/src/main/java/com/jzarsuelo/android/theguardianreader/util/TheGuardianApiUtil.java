@@ -19,10 +19,16 @@ public class TheGuardianApiUtil {
     public static String getContentEndpoint(Context context) {
         final String uriString = context.getString(R.string.the_guardian_api_content_endpoint);
 
+        final String pageSizeValue = PreferenceUtil.getString(
+                context,
+                context.getString(R.string.settings_news_to_load_key),
+                context.getString(R.string.settings_news_to_load_default));
+
         Uri baseUri = Uri.parse(uriString);
 
         Uri.Builder uriBuilder = baseUri.buildUpon();
         uriBuilder.appendQueryParameter("api-key", getApiKey(context));
+        uriBuilder.appendQueryParameter("page-size", pageSizeValue);
 
         return uriBuilder.toString();
     }
