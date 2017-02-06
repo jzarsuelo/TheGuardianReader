@@ -2,7 +2,33 @@
     <string name="app_name">The Guardian Reader</string>
 
     <!-- The Guardian API endpoints -->
-    <string name="the_guardian_api_content_endpoint">https://content.guardianapis.com/search</string>
+    <string name="the_guardian_api_content_endpoint">https://content.guardianapis.com/search
+    </string>
 
     <string name="empty_list_message">No news to show.</string>
+
+    <!-- ** SETTINGS ** -->
+    <string name="settings_title">News Settings</string>
+
+    <!-- Strings for number of news to load per request -->
+    <string name="settings_news_to_load_label">News to Load</string>
+    <string name="settings_news_to_load_key" translatable="false">news_to_load</string>
+    <string name="settings_news_to_load_default" translatable="false">10</string>
+
+    <!-- Label for news_to_load 10 option  -->
+    <string name="settings_news_to_load_10_label">10</string>
+    <string name="settings_news_to_load_10_value" translatable="false">10</string>
+
+    <!-- Label for news_to_load 20 option -->
+    <string name="settings_news_to_load_20_label">20</string>
+    <string name="settings_news_to_load_20_value" translatable="false">20</string>
+
+    <!-- Label for news_to_load 30 option -->
+    <string name="settings_news_to_load_30_label">30</string>
+    <string name="settings_news_to_load_30_value" translatable="false">30</string>
+
+    <!-- ** MENU ** -->
+    <string name="settings_menu_item">Settings</string>
+
+
 </resources>
