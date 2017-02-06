@@ -13,7 +13,7 @@
     <!-- Strings for number of news to load per request -->
     <string name="settings_number_of_news_to_load_label">Number of News to Load</string>
     <string name="settings_number_of_news_to_load_key" translatable="false">news_to_load</string>
-    <string name="settings_number_of_news_to_load_default" translatable="false">10</string>
+    <string name="settings_number_of_news_to_load_default" translatable="false">@string/settings_number_of_news_to_load_10_value</string>
 
     <!-- Label for news_to_load 10 option  -->
     <string name="settings_number_of_news_to_load_10_label">10</string>
@@ -26,6 +26,23 @@
     <!-- Label for news_to_load 30 option -->
     <string name="settings_number_of_news_to_load_30_label">30</string>
     <string name="settings_number_of_news_to_load_30_value" translatable="false">30</string>
+
+    <!-- Strings for number of news to load per request -->
+    <string name="settings_order_by_label">Order by</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_relevance_value</string>
+
+    <!-- Label for order_by_relevance -->
+    <string name="settings_order_by_relevance_label">Relevance</string>
+    <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
+
+    <!-- Label for order_by_newest -->
+    <string name="settings_order_by_newest_label">Newest</string>
+    <string name="settings_order_by_newest_value" translatable="false">newest</string>
+
+    <!-- Label for order_by_oldest -->
+    <string name="settings_order_by_oldest_label">Oldest</string>
+    <string name="settings_order_by_oldest_value">oldest</string>
 
     <!-- ** MENU ** -->
     <string name="settings_menu_item">Settings</string>

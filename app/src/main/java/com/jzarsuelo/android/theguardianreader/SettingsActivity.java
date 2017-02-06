@@ -22,8 +22,11 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference newsToLoad = findPreference( getString(R.string.settings_number_of_news_to_load_key) );
-            bindPreferenceToSummaryValue(newsToLoad);
+            Preference numberOfNewsToLoad = findPreference( getString(R.string.settings_number_of_news_to_load_key) );
+            bindPreferenceToSummaryValue(numberOfNewsToLoad);
+
+            Preference orderBy = findPreference( getString(R.string.settings_order_by_key) );
+            bindPreferenceToSummaryValue(orderBy);
         }
 
         @Override
