@@ -21,8 +21,8 @@ public class TheGuardianApiUtil {
 
         final String pageSizeValue = PreferenceUtil.getString(
                 context,
-                context.getString(R.string.settings_news_to_load_key),
-                context.getString(R.string.settings_news_to_load_default));
+                context.getString(R.string.settings_number_of_news_to_load_key),
+                context.getString(R.string.settings_number_of_news_to_load_default));
 
         Uri baseUri = Uri.parse(uriString);
 
