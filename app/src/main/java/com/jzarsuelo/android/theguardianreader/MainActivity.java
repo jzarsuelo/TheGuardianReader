@@ -77,10 +77,24 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         menuInflater.inflate(R.menu.main, menu);
 
         int tintColor = ContextCompat.getColor(this, android.R.color.white);
-        MenuItem settingsMenu = menu.findItem(R.id.settings);
+        MenuItem settingsMenu = menu.findItem(R.id.settings_menu_item);
         DrawableCompat.setTint(settingsMenu.getIcon(), tintColor);
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final int menuId = item.getItemId();
+
+        switch (menuId){
+            case R.id.settings_menu_item:
+                Intent i = new Intent(this, SettingsActivity.class);
+                startActivity(i);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
