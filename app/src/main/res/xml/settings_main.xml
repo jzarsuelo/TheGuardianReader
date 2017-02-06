@@ -1,0 +1,13 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/settings_title">
+
+    <ListPreference
+        android:key="@string/settings_news_to_load_key"
+        android:title="@string/settings_news_to_load_label"
+        android:dialogTitle="@string/settings_news_to_load_label"
+        android:defaultValue="@string/settings_news_to_load_default"
+        android:entries="@array/settings_news_to_load_labels"
+        android:entryValues="@array/settings_news_to_load_values"/>
+
+</PreferenceScreen>
