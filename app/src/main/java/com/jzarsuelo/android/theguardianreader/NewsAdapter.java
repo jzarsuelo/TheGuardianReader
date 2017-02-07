@@ -40,8 +40,12 @@ public class NewsAdapter extends ArrayAdapter<News> {
         TextView sectionNameTextView = (TextView) convertView.findViewById(R.id.section_name);
         sectionNameTextView.setText( news.getSectionName() );
 
-        TextView authorTextView = (TextView) convertView.findViewById(R.id.news_author);
-        authorTextView.setText( news.getAuthor() );
+        String author = news.getAuthor();
+        if ( author != null && !author.isEmpty() ) {
+            TextView authorTextView = (TextView) convertView.findViewById(R.id.news_author);
+            authorTextView.setVisibility(View.VISIBLE);
+            authorTextView.setText( news.getAuthor() );
+        }
 
         String formattedDate = TimeUtil.millisecondsToString( news.getWebPublicationDate(), News.DATE_FORMAT );
         TextView datePublished = (TextView) convertView.findViewById(R.id.date_published);

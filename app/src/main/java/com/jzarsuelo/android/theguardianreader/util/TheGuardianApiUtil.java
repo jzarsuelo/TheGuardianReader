@@ -35,6 +35,7 @@ public class TheGuardianApiUtil {
         uriBuilder.appendQueryParameter("api-key", getApiKey(context));
         uriBuilder.appendQueryParameter("page-size", pageSizeValue);
         uriBuilder.appendQueryParameter("order-by", orderBy);
+        uriBuilder.appendQueryParameter("show-references", "author");
 
         return uriBuilder.toString();
     }

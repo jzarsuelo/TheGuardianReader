@@ -5,7 +5,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:minHeight="?android:attr/listPreferredItemHeight"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical">
+
     <TextView
         android:id="@+id/news_title"
         android:layout_width="wrap_content"
@@ -16,30 +19,31 @@
         tools:text="Middle Eastern cinema has so much to say, and we need to be listening now more than ever"/>
 
     <TextView
-        android:id="@+id/section_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/news_title"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        tools:text="Business"/>
-
-    <TextView
         android:id="@+id/news_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/section_name"
+        android:layout_below="@id/news_title"
         android:layout_marginTop="2dp"
         android:textSize="12sp"
+        android:visibility="gone"
         tools:text="by: Author"/>
+
+    <TextView
+        android:id="@+id/section_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/news_author"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"
+        tools:text="Business"/>
 
     <TextView
         android:id="@+id/date_published"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/section_name"
+        android:layout_below="@id/news_author"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         android:textSize="12sp"
         tools:text="by: Unknown"/>
 
