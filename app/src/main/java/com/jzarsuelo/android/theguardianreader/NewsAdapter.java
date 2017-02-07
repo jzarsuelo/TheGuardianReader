@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.jzarsuelo.android.theguardianreader.model.News;
+import com.jzarsuelo.android.theguardianreader.util.TimeUtil;
 
 import java.util.List;
 
@@ -35,6 +36,16 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         TextView titleTextView = (TextView) convertView.findViewById(R.id.news_title);
         titleTextView.setText( news.getWebTitle() );
+
+        TextView sectionNameTextView = (TextView) convertView.findViewById(R.id.section_name);
+        sectionNameTextView.setText( news.getSectionName() );
+
+        TextView authorTextView = (TextView) convertView.findViewById(R.id.news_author);
+        authorTextView.setText( news.getAuthor() );
+
+        String formattedDate = TimeUtil.millisecondsToString( news.getWebPublicationDate(), News.DATE_FORMAT );
+        TextView datePublished = (TextView) convertView.findViewById(R.id.date_published);
+        datePublished.setText( formattedDate );
 
         return convertView;
     }

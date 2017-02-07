@@ -5,6 +5,9 @@ package com.jzarsuelo.android.theguardianreader.model;
  */
 public class News {
 
+    public static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+    public static final String DATE_FORMAT = "yyyy-MM-dd";
+
     /** Section Id of this news */
     private String mSectionId;
 
@@ -20,14 +23,23 @@ public class News {
     /** Web uri of this news */
     private String mApiUrl;
 
+    /** Author of the news */
+    private String mAuthor;
+
+    /** Date in milliseconds when the news is published */
+    private Long mWebPublicationDate;
+
     public News(){}
 
-    public News(String sectionId, String sectionName, String webTitle, String webUrl, String apiUrl) {
+    public News(String sectionId, String sectionName, String webTitle, String webUrl, String apiUrl,
+                String author, Long webPublicationDate) {
         mSectionId = sectionId;
         mSectionName = sectionName;
         mWebTitle = webTitle;
         mWebUrl = webUrl;
         mApiUrl = apiUrl;
+        mAuthor = author;
+        mWebPublicationDate = webPublicationDate;
     }
 
     public String getSectionId() {
@@ -70,6 +82,22 @@ public class News {
         mApiUrl = apiUrl;
     }
 
+    public String getAuthor() {
+        return mAuthor;
+    }
+
+    public void setAuthor(String author) {
+        mAuthor = author;
+    }
+
+    public Long getWebPublicationDate() {
+        return mWebPublicationDate;
+    }
+
+    public void setWebPublicationDate(Long webPublicationDate) {
+        mWebPublicationDate = webPublicationDate;
+    }
+
     @Override
     public String toString() {
         return "News{" +
@@ -78,6 +106,8 @@ public class News {
                 ", mWebTitle='" + mWebTitle + '\'' +
                 ", mWebUrl='" + mWebUrl + '\'' +
                 ", mApiUrl='" + mApiUrl + '\'' +
+                ", mAuthor='" + mAuthor + '\'' +
+                ", mWebPublicationDate=" + mWebPublicationDate +
                 '}';
     }
 }

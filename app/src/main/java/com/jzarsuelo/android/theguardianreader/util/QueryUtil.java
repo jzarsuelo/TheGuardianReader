@@ -129,12 +129,19 @@ public class QueryUtil {
                 for (int i = 0; i < newsJsonArray.length(); i++) {
                     JSONObject newsJsonObject = newsJsonArray.getJSONObject(i);
 
+                    String webPublicationDate = newsJsonObject.optString("webPublicationDate");
+                    Long webPublicationDateInMilli =
+                            TimeUtil.toMilliseconds(webPublicationDate, News.DATE_TIME_FORMAT);
+
                     News news = new News(
                             newsJsonObject.getString("sectionId"),
                             newsJsonObject.getString("sectionName"),
                             newsJsonObject.getString("webTitle"),
                             newsJsonObject.getString("webUrl"),
-                            newsJsonObject.getString("apiUrl")
+                            newsJsonObject.getString("apiUrl"),
+                            newsJsonObject.optString("author"),
+                            webPublicationDateInMilli
+
                     );
 
                     newsList.add(news);
